@@ -1,0 +1,32 @@
+vich_uploader:
+    db_driver: orm
+
+    mappings:
+       passport_image:
+           uri_prefix: /images/passports
+           upload_destination: '%kernel.project_dir%/public/images/passports'
+           namer: Vich\UploaderBundle\Naming\OrignameNamer
+       driverlicensefront_image:
+           uri_prefix: /images/driverlicensefront
+           upload_destination: '%kernel.project_dir%/public/images/driverlicenses/front'
+           namer: Vich\UploaderBundle\Naming\OrignameNamer
+       driverlicenseback_image:
+           uri_prefix: /images/driverlicenseback
+           upload_destination: '%kernel.project_dir%/public/images/driverlicenses/back'
+           namer: Vich\UploaderBundle\Naming\OrignameNamer
+       identitycardfront_image:
+           uri_prefix: /images/identitycardfront
+           upload_destination: '%kernel.project_dir%/public/images/identitycards/front'
+           namer: Vich\UploaderBundle\Naming\OrignameNamer
+       identitycardback_image:
+           uri_prefix: /images/identitycardback
+           upload_destination: '%kernel.project_dir%/public/images/identitycards/back'
+           namer: Vich\UploaderBundle\Naming\OrignameNamer
+       face_image:
+           uri_prefix: /images/face
+           upload_destination: '%kernel.project_dir%/public/images/face'
+           namer: Vich\UploaderBundle\Naming\OrignameNamer
+       profil_image:
+           uri_prefix: /images/profil
+           upload_destination: '%kernel.project_dir%/public/images/profil'
+           namer: Vich\UploaderBundle\Naming\OrignameNamer

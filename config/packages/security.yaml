@@ -1,0 +1,66 @@
+security:
+    encoders:
+        App\Entity\User:
+            algorithm: auto
+
+    # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+    providers:
+        # used to reload user from session & other features (e.g. switch_user)
+        app_user_provider:
+            entity:
+                class: App\Entity\User
+                property: email
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        # main:
+        #     anonymous: false
+        #     lazy: true
+        #     provider: app_user_provider
+        #     json_login:
+        #         check_path: api_login
+
+            # guard:
+            #     authenticators:
+            #         - App\Security\LoginAuthenticator
+            # logout:
+            #     path: app_logout
+            #     where to redirect after logout
+            #     target: app_any_route
+        login:
+            pattern:  ^/api_storage/login$
+            stateless: true
+            anonymous: true
+            provider: app_user_provider
+            json_login:
+                check_path: api_login
+                success_handler: lexik_jwt_authentication.handler.authentication_success
+                failure_handler: lexik_jwt_authentication.handler.authentication_failure
+            logout: 
+                path: api_logout
+        api:
+            pattern:   ^/api_storage
+            stateless: true
+            #Make public the docs or make private
+            anonymous: true
+            guard:
+                authenticators:
+                    - lexik_jwt_authentication.jwt_token_authenticator
+            # activate different ways to authenticate
+            # https://symfony.com/doc/current/security.html#firewalls-authentication
+
+            # https://symfony.com/doc/current/security/impersonating_user.html
+            # switch_user: true
+
+    # Easy way to control access for large sections of your site
+    # Note: Only the *first* access control that matches will be used
+    access_control:
+        # - { path: ^/admin, roles: ROLE_ADMIN }
+        # - { path: ^/profile, roles: ROLE_USER }
+        - { path: ^/api_storage/User/Create}
+        # - { path: ^/api_storage/check/docs, roles: IS_AUTHENTICATED_ANAONYMOUSLY }
+        - { path: ^/api_storage$, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/api_storage/login$, roles: IS_AUTHENTICATED_ANAONYMOUSLY }
+       
+
