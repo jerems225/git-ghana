@@ -36,7 +36,7 @@ class OpenApiFactory implements OpenApiFactoryInterface {
         // $openApi = $openApi->withSecurity(['bearerAuth' => []]);
 
         $schemas = $openApi->getComponents()->getSchemas();
-        $schemas['Credentials'] = new ArrayObject([
+        $schemas['Credentials'] = new \ArrayObject([
             'type' => 'object',
             'properties' => [
                 'username' => [

@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Manager\UserManager;
-use Doctrine\ORM\EntityManagerInterface;
 
 class CreateUserController
 {

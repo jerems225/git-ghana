@@ -14,20 +14,6 @@ security:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
-        # main:
-        #     anonymous: false
-        #     lazy: true
-        #     provider: app_user_provider
-        #     json_login:
-        #         check_path: api_login
-
-            # guard:
-            #     authenticators:
-            #         - App\Security\LoginAuthenticator
-            # logout:
-            #     path: app_logout
-            #     where to redirect after logout
-            #     target: app_any_route
         login:
             pattern:  ^/api_storage/login$
             stateless: true

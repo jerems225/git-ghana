@@ -36,10 +36,11 @@ class JWTCreatedListener
 
         if ($user instanceof User) {
             $data['data'] = array(
-                'id'        => $user->getId(),
+                'uuid'        => $user->getUuid(),
                 'username'  => $user->getUsername(),
                 'email'     => $user->getEmail(),
                 'roles'     => $user->getRoles(),
+                'userprofile_id' => $user->getUserprofile()->getId()
             );
         }
 

@@ -2,7 +2,3 @@ api_platform:
     resource: .
     type: api_platform
     prefix: /api_storage
-app_swagger_ui:
-    path: /api_storage/check/docs
-    methods: GET
-    defaults: { _controller: api_platform.swagger.action.ui, area: default }

@@ -3,17 +3,13 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiFilter;
-use App\Repository\UserRepository;
 use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use App\Controller\CreateUserController;
-use App\Controller\MeController;
 use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
-use Symfony\Component\Security\Core\Validator\Constraints\UserPassword;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints\Email;
 use ApiPlatform\Core\Annotation\ApiProperty;
@@ -165,7 +161,7 @@ use ApiPlatform\Core\Annotation\ApiProperty;
                        * @ORM\Column(type="json")
                        */
                       #[Groups(['read:collection','write:User'])]
-                      private $roles = [];
+                      private $roles;
                   
                       /**
                        * @var string|null
@@ -237,9 +233,8 @@ use ApiPlatform\Core\Annotation\ApiProperty;
                       private $userprofile;
       
                      /**
-                      * @ORM\Column(type="uuid", unique=true)
+                      * @ORM\Column(type="string", unique=true, length=1000)
                       * @ApiProperty(identifier=true)
-                      * @ORM\GeneratedValue(strategy="UUID")
                       * @ApiProperty(identifier=true)
                       */
                     #[Groups(['read:collection','write:User'])]
@@ -518,11 +513,6 @@ use ApiPlatform\Core\Annotation\ApiProperty;
 
                           return $this;
                       }
-                  
-                  
-                  
-                      
-                  
                   
                   }
 

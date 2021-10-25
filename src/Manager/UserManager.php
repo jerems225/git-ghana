@@ -6,7 +6,6 @@ namespace App\Manager;
 use App\Entity\User;
 use App\Entity\Userprofile;
 use App\Repository\UserRepository;
-use App\Repository\UserprofileRepository;
 use App\Services\PasswordService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
@@ -114,10 +113,6 @@ class UserManager
         $user->setUserprofile($userprofile);
         $user->getUserprofile()->setReferraltoken($this->referenceFormat());
         $user->getUserprofile()->setKyctoken("empty");
-
-
-        
-        
 
         $this->em->persist($user);
         $this->em->flush();

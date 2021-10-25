@@ -13,7 +13,7 @@
         "doctrine/annotations": "^1.0",
         "doctrine/doctrine-bundle": "^2.3",
         "doctrine/doctrine-migrations-bundle": "^3.1",
-        "doctrine/orm": "^2.9",
+        "doctrine/orm": "^3.0",
         "lexik/jwt-authentication-bundle": "^2.11",
         "nelmio/cors-bundle": "^2.1",
         "phpdocumentor/reflection-docblock": "^5.2",
@@ -50,6 +50,7 @@
         "webonyx/graphql-php": "^14.7"
     },
     "require-dev": {
+        "doctrine/dbal": "^3.1",
         "symfony/browser-kit": "^5.2",
         "symfony/css-selector": "^5.2",
         "symfony/debug-bundle": "^5.2",

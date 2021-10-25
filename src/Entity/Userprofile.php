@@ -3,7 +3,6 @@
 namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Controller\Uploads\UploadDriverLicenseBackController;
@@ -13,7 +12,6 @@ use App\Controller\Uploads\UploadIdentityCardBackController;
 use App\Controller\Uploads\UploadIdentityCardFrontController;
 use App\Controller\Uploads\UploadPassPortController;
 use App\Controller\Uploads\UploadProfileImageController;
-use App\Repository\UserprofileRepository;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints\Length;
@@ -552,6 +550,24 @@ class Userprofile
      */
     #[Groups(['read:collection','read:Userprofile','write:User'])]
     private $basecurrency;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    #[Groups(['read:collection','read:Userprofile','write:User'])]
+    private $kycfacestatus = "none";
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    #[Groups(['read:collection','read:Userprofile','write:User'])]
+    private $kycidcardstatus = "none";
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    #[Groups(['read:collection','read:Userprofile','write:User'])]
+    private $kycphonenumberstatus = "none";
 
 
     public function __construct()
@@ -1134,6 +1150,42 @@ class Userprofile
     public function setPassportpicfileUrl(?string $passportpicfileUrl): Userprofile
     {
         $this->passportpicfileUrl = $passportpicfileUrl;
+
+        return $this;
+    }
+
+    public function getKycfacestatus(): ?string
+    {
+        return $this->kycfacestatus;
+    }
+
+    public function setKycfacestatus(string $kycfacestatus): self
+    {
+        $this->kycfacestatus = $kycfacestatus;
+
+        return $this;
+    }
+
+    public function getKycidcardstatus(): ?string
+    {
+        return $this->kycidcardstatus;
+    }
+
+    public function setKycidcardstatus(string $kycidcardstatus): self
+    {
+        $this->kycidcardstatus = $kycidcardstatus;
+
+        return $this;
+    }
+
+    public function getKycphonenumberstatus(): ?string
+    {
+        return $this->kycphonenumberstatus;
+    }
+
+    public function setKycphonenumberstatus(string $kycphonenumberstatus): self
+    {
+        $this->kycphonenumberstatus = $kycphonenumberstatus;
 
         return $this;
     }
